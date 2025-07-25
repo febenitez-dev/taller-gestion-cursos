@@ -50,16 +50,6 @@ public class CourseRepositoryTest {
         List<Course> actualCourses = courseRepository.findAll();
 
         // THEN
-        assertEquals(courses.size(), actualCourses.size());
-
-        assertAll( () -> {
-            for (int i = 0; i < courses.size(); i++) {
-                Course expectedCourse = courses.get(i);
-                Course actualCourse = actualCourses.get(i);
-
-                assertEquals(expectedCourse.getName(), actualCourse.getName());
-                assertEquals(expectedCourse.getAuthor(), actualCourse.getAuthor());
-            }
-        });
+        assertArrayEquals(courses.toArray(), actualCourses.toArray());
     }
 }

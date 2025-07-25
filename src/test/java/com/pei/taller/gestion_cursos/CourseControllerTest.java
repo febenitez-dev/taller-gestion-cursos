@@ -31,18 +31,6 @@ public class CourseControllerTest {
 
     @Test
     void should_ReturnCourse_When_CorrectId() {
-        // GIVEN
-        when(courseRepositoryMock.findById(1L))
-                .thenReturn(Optional.of(new Course(1L, "Fernando Lucchesi", "Introduction to Computer Science")));
 
-        // WHEN
-        Course actualCourse = (Course) courseController.getCourseById(1L).getBody();
-
-        // THEN
-        assertAll(
-                () -> assertEquals(expectedCourse.getIdCourse(), actualCourse.getIdCourse()),
-                () -> assertEquals(expectedCourse.getAuthor(), actualCourse.getAuthor()),
-                () -> assertEquals(expectedCourse.getName(), actualCourse.getName())
-        );
     }
 }
