@@ -58,16 +58,15 @@ public class CourseRepositoryTest {
 
     @Test
     void should_Delete_when_IdCorrect(){
-        //GIVEN
+        // GIVEN
         Long id = 1L;
 
-        //WHEN
+        // WHEN
         courseRepository.deleteById(id);
         Optional<Course> actualCourse =  courseRepository.findById(1L);
 
-        //THEN
+        // THEN
         assertFalse(actualCourse.isPresent());
-
     }
 
     @Nested
@@ -92,13 +91,13 @@ public class CourseRepositoryTest {
 
         @Test
         void should_Returns_ok_When_PostCourse() {
-            //GIVEN
+            // GIVEN
             List<Course> cursos = courseRepository.findAll();
             Course lastCourse = cursos.getLast();
 
-            //WHEN
+            // WHEN
 
-            //THEN
+            // THEN
             assertAll(
                     () -> assertEquals(lastCourse.getName(), courseSetupName),
                     () -> assertEquals(lastCourse.getAuthor(), courseSetupAuthor)
