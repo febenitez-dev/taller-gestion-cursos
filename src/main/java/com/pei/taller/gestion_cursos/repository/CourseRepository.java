@@ -4,7 +4,9 @@ import com.pei.taller.gestion_cursos.model.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
-    String findByAuthor(String author);
+    List<Course> findByAuthor(String author);
 }

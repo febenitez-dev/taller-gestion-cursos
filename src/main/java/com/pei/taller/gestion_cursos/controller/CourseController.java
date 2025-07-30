@@ -2,7 +2,6 @@ package com.pei.taller.gestion_cursos.controller;
 
 import com.pei.taller.gestion_cursos.model.Course;
 import com.pei.taller.gestion_cursos.repository.CourseRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,11 +42,11 @@ public class CourseController {
 
     @GetMapping("/author/{author}")
     public ResponseEntity<?> getCourseByAuthor(@PathVariable String author) {
-        String courseName = courseRepository.findByAuthor(author);
-        if (courseName == null || courseName.isEmpty()) {
+        List<Course> course = courseRepository.findByAuthor(author);
+        if (course == null || course.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró un curso para el autor: " + author);
         }
-        return ResponseEntity.ok(courseName);
+        return ResponseEntity.ok(course);
     }
 
     @DeleteMapping("/{id}")
